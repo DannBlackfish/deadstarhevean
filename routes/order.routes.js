@@ -3,7 +3,7 @@ const router = require('express').Router();
 // const { isLogged } = require('../middlewares/middlewares')
 
 const {
- makeOrder, orders, ordersUser, detailOrder, updateOrder, deleOrder
+ makeOrder, orders, ordersUser, detailOrder, updateOrder, deleteOrder
 } = require('../controllers/orderController')
 
 router.post('/order/makeOrder', makeOrder);

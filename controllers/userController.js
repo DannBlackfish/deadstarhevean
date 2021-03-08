@@ -32,7 +32,7 @@ exports.createUser = async (req, res) => {
 
         // Hashear el password
         const salt = await bcrypt.genSalt(10)
-        usuario.password = await bcrypt.hash(password, salt)
+        user.password = await bcrypt.hash(password, salt)
         console.log("Línea 39", user)
 
         // Save user

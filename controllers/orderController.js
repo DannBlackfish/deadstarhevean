@@ -3,8 +3,8 @@ const Order = require('../models/Order.model')
 //CREATE AN ORDER
 exports.makeOrder = async (req, res, next) => {
     const {products, total, quantity, user} = req.body
-    data.user = req.user._id
-    const order = await Order.create({ ...data, id, products, total, quantity, user })
+    user = req.user._id
+    const order = await Order.create({ id, products, total, quantity, user })
     res.json({ order })
 }
 
