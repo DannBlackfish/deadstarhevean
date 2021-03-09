@@ -22,11 +22,10 @@ const PORT = process.env.PORT || 3001
 
 // Routing
 // Import routes
-app.use('/api/users', require('./routes/user.routes'))
-app.use('/api/auth', require('./routes/auth.routes'))
-app.use('/api/order', require('./routes/order.routes'))
-app.use('/api/product', require('./routes/product.routes'))
-app.use('/api/proyectos', require('./routes/proyectos'))
+app.use('/user', require('./routes/user.routes'))
+app.use('/auth', require('./routes/auth.routes'))
+app.use('/order', require('./routes/order.routes'))
+app.use('/product', require('./routes/product.routes'))
 
 // DEFINE THE HOME PAGE
 app.get('/', (req,res) => {

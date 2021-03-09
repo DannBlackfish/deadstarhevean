@@ -4,6 +4,10 @@ const router    = express.Router()
 
 const {check}   = require('express-validator')
 
+const {
+    getProfile, editProfile, deleteProfile
+   } = require('../controllers/userController')
+
 const userController = require('../controllers/userController')
 
 // CREATE A USER
@@ -22,5 +26,11 @@ router.get("/", (req, res) => {
         message: "new user"
     })
 })
+
+router.get('/profile', getProfile)
+
+router.patch('/profile/edit', editProfile)
+
+router.delete('/profile/delete', deleteProfile)
 
 module.exports = router

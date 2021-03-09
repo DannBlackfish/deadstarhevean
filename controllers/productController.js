@@ -1,26 +1,26 @@
 const Product = require('../models/Product.model')
 
-//ALL PRODUCTS
+//ALL PRODUCTS ✅
 exports.products = async (req, res, next) => {
-    const products = await Product.find({})
-    res.json({products})
+    const all = await Product.find({})
+    res.json({all})
 }
 
-//DETAIL PRODUCT
+//DETAIL PRODUCT ✅
 exports.detailProduct = async (req, res, next) => {
     const id = req.params.id
     const detailProduct = await Product.findById({_id: id})
     res.json({detailProduct})
 }
 
-//EDIT PRODUCT
-exports.updateProduct = async (req, res, next) => {
+//EDIT PRODUCT ✅
+exports.editProduct = async (req, res, next) => {
     const id = req.params.id
-    const updateProduct = await Product.findByIdAndUpdate({_id: id}, { $set: { ...req.body }}, { new: true })
-    res.json({updateProduct})
+    const editProduct = await Product.findByIdAndUpdate({_id: id}, { $set: { ...req.body }}, { new: true })
+    res.json({editProduct})
 }
 
-//DELTE PRODUCT
+//DELETE PRODUCT
 exports.deleteProduct = async (req, res, next) => {
     const id = req.params.id
     const deleteProduct = await Product.findByIdAndDelete({_id: id},{ $set: { ...req.body }}, { new: true })

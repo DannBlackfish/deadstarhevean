@@ -1,7 +1,8 @@
 const { Schema, model } = require('mongoose');
 
 const orderSchema = new Schema({
-    products:  Array,
+    products: 
+        [{type: Schema.Types.ObjectId, ref: 'Product'}],
     total: {
         type: Number
     },
@@ -12,9 +13,12 @@ const orderSchema = new Schema({
         type: Schema.Types.ObjectId, ref: 'User' 
     },
     quantity: {
-        type: Number,
+        type: Number
     },
-  shippingAddress: { 
+    size: {
+        type: [String]
+    },
+    shippingAddress: { 
         type: String 
 },
 },

@@ -21,9 +21,8 @@ exports.createUser = async (req, res) => {
         // Check that the registered user is unique
         let user = await User.findOne({email})
         
-
         if(user){
-            return res.status(400).json({msg: "User already exists" })
+            return res.status(400).json({message: "User already exists" })
         }
 
         // save the new user
@@ -67,4 +66,22 @@ exports.createUser = async (req, res) => {
         console.log(error)
         res.status(400).send("There was an error") 
     }
+}
+
+exports.getProfile = async (req, res) => {
+    const { _id } = req.user
+    const profile = await User.findById(_id).populate('orders')
+    res.json({ profile })
+}
+   
+exports.editProfile = async (req, res) => {
+    const { _id } = req.user
+    const profile = await User.findByIdAndUpdate(_id, { $set: { ...req.body } }, { new: true })
+    res.json({ profile })
+}
+   
+exports.deleteProfile = async (req, res) => {
+    const { _id } = req.user
+    const profile = await User.findByIdAndDelete(_id)
+    res.json({ profile })
 }

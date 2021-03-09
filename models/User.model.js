@@ -28,10 +28,8 @@ const UserSchema = mongoose.Schema({
     mobile: { 
         type: Number
     },
-    orders: { 
-        // type: String
-        type: Schema.Types.ObjectId, ref: 'Order' 
-    }
+    orders: 
+        [{type: Schema.Types.ObjectId, ref: 'Order'}]
 })
 
 module.exports = mongoose.model('User', UserSchema)

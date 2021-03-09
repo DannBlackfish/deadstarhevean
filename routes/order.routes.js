@@ -1,21 +1,17 @@
 const router = require('express').Router();
 
-// const { isLogged } = require('../middlewares/middlewares')
-
 const {
- makeOrder, orders, ordersUser, detailOrder, updateOrder, deleteOrder
+ makeOrder, orders, updateOrder, editOrder, deleteOrder
 } = require('../controllers/orderController')
 
-router.post('/order/makeOrder', makeOrder);
+router.post('/makeorder', makeOrder);
 
-router.get('/order/orders', orders);
+router.get('/orders', orders);
 
-router.get('/order/detailOrder/:id', detailOrder);
+router.patch('/update/:id', updateOrder);
 
-router.get('/order/orders/ordersUser', ordersUser)
+router.patch('/edit/:id', editOrder)
 
-router.patch('/order/update/:id', updateOrder)
-
-router.delete('/order/delete/:id', deleteOrder)
+router.delete('/delete/:id', deleteOrder)
 
 module.exports = router;
