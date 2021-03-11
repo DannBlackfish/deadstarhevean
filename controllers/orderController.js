@@ -16,23 +16,24 @@ exports.orders = async (req, res, next) => {
     res.json({ orders })
 }
 
-//UPDATE ORDER
-exports.updateOrder = async (req, res, next) => {
+// //UPDATE ORDER
+// exports.updateOrder = async (req, res, next) => {
 
-    // const order = new Order(req.body)
-    // order.user = req.user.id
-    // order.save()
+//     // const order = new Order(req.body)
+//     // order.user = req.user.id
+//     // order.save()
+    
+//     const order = new Order(req.body)
+//     order.user = req.user.id
+//     console.log(req.user)
+//     order.save()
 
-    const order = new Order(req.body)
-    order.user = req.user.id
-    order.save()
+//     // const update = await User.findByIdAndUpdate(req.user.id, {$addToSet: {orders: order._id}}, {new: true}).populate('orders')
+//     // console.log(update)
 
-    // const update = await User.findByIdAndUpdate(req.user.id, {$addToSet: {orders: order._id}}, {new: true}).populate('orders')
-    // console.log(update)
-
-    const updateOrder = await Order.findByIdAndUpdate({user: req.user.id}).populate('user')
-    res.json({ updateOrder })
-}
+//     const updateOrder = await Order.findByIdAndUpdate({user: req.user.id}).populate('user')
+//     res.json({ updateOrder })
+// }
 
 //EDIT AN ORDER ID ORDER ✅
 exports.editOrder = async (req, res, next) => {

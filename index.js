@@ -12,7 +12,10 @@ connectDB()
 
 // MIDDLEWARES
 // Enable CORS
-app.use(cors())
+app.use(cors({
+    credentials: true,
+    origin: ["http://localhost:3000"],
+  }))
 
 // Enable express.json. Allow data that the user submits.
 app.use(express.json({extended:true}))

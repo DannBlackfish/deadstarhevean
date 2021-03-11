@@ -16,7 +16,7 @@ exports.createUser = async (req, res) => {
 
     // EXTRACT EMAIL AND PASSWORD
     const { email, password } = req.body
-
+    console.log(req.body)
     try {
         // Check that the registered user is unique
         let user = await User.findOne({email})
@@ -24,7 +24,7 @@ exports.createUser = async (req, res) => {
         if(user){
             return res.status(400).json({message: "User already exists" })
         }
-
+        
         // save the new user
         user = new User(req.body)
         console.log("Linea 33:", user)
