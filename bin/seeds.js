@@ -1,7 +1,7 @@
 const mongoose      = require('mongoose');
 const Product        = require('../models/Product.model.js')
 
-mongoose.connect("mongodb://localhost/deadstarheaven", {
+mongoose.connect('mongodb+srv://Dann:Holamundo21@cluster0.f2hyd.mongodb.net/deadstarheaven', {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true
