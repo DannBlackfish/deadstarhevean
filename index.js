@@ -14,7 +14,7 @@ connectDB()
 // Enable CORS
 app.use(cors({
     credentials: true,
-    origin: ["http://localhost:3000"],
+    origin: ["https://deadstarhevean.netlify.app"],
   }))
 
 // Enable express.json. Allow data that the user submits.
