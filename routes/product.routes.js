@@ -4,7 +4,7 @@ const { products, categoryProducts, detailProduct, editProduct, deleteProduct } 
 
 router.get('/all', products);
 
-router.get('/category', categoryProducts);
+router.get('/category/:categoria', categoryProducts);
 
 router.get('/detail/:id', detailProduct);
 

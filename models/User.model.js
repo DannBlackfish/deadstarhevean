@@ -28,8 +28,11 @@ const UserSchema = mongoose.Schema({
     mobile: { 
         type: Number
     },
-    orders: 
-        [{type: Schema.Types.ObjectId, ref: 'Order'}]
+    orders: [{type: Schema.Types.ObjectId, ref: 'Order'}],
+    checkout: {
+        type: Array
+    }
+    
 })
 
 module.exports = mongoose.model('User', UserSchema)

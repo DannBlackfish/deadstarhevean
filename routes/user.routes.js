@@ -1,17 +1,13 @@
 // RUTAS PARA CREAR USUARIOS
 const express   = require('express')
 const router    = express.Router()
-
+const auth      = require("../middleware/auth")
 const {check}   = require('express-validator')
-
-const {
-    getProfile, editProfile, deleteProfile
-   } = require('../controllers/userController')
-
+const {getProfile, editProfile, deleteProfile, changeProfile} = require('../controllers/userController')
 const userController = require('../controllers/userController')
 
 // CREATE A USER
-// api/users
+// /user
 router.post('/', 
     [
         check("name", "The name is required").not().isEmpty(),
@@ -27,10 +23,12 @@ router.get("/", (req, res) => {
     })
 })
 
-router.get('/profile', getProfile)
+router.get('/profile', auth, getProfile)
 
-router.patch('/profile/edit', editProfile)
+router.patch('/profile/edit', auth, editProfile)
 
-router.delete('/profile/delete', deleteProfile)
+router.put('/profile/change/:id', auth, changeProfile)
+
+router.delete('/profile/delete', auth, deleteProfile)
 
 module.exports = router

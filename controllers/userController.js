@@ -75,10 +75,48 @@ exports.getProfile = async (req, res) => {
 }
    
 exports.editProfile = async (req, res) => {
-    const { _id } = req.user
-    const profile = await User.findByIdAndUpdate(_id, { $set: { ...req.body } }, { new: true })
-    res.json({ profile })
+    const { id } = req.user
+    try{
+        const profile = await User.findByIdAndUpdate(id, { $push: {checkout: req.body } }, { new: true })
+        res.json({ profile })
+    } catch(error){
+        console.log(error)
+    }
+    
 }
+
+
+exports.changeProfile = async (req, res, next) => {
+    // const errores = validationResult(req)
+    // if(!errores.isEmpty()) {
+    //   return res.status(400).json({erores: errores.array()})
+    // }
+  
+    const {name, email, mobile, address, password} = req.body
+    const newProfile = {}
+  
+    if(name && email && password) {
+      newProfile.name = name
+      newProfile.email = email
+      newProfile.mobile = mobile
+      newProfile.address = address
+      newProfile.password = password
+    }
+  
+    try {
+      let profile = await User.findById(req.params.id)
+  
+    //   if(!profile) {
+    //     return res.status(400).json({msg: 'Usuario no encontrado'})
+    //   }
+  
+      profile = await User.findByIdAndUpdate({_id: req.params.id.toString()}, {$set: newProfile}, {new: true} )
+      res.json({profile})
+  
+    } catch(error) {
+      console.log(error)
+    }
+  }
    
 exports.deleteProfile = async (req, res) => {
     const { _id } = req.user

@@ -6,13 +6,14 @@ exports.products = async (req, res, next) => {
     res.json(all)
 }
 
-//CATEGORY PRODUCTS 
+//CATEGORY PRODUCTS ✅
 exports.categoryProducts = async (req, res, next) => {
-    const data = req.query
-    const categories = req.body
+    const categories = req.params.categoria
+
     console.log(categories)
-    console.log(data)
-    const categoryProduct = await Product.find({data: categories})
+
+    const categoryProduct = await Product.find({category: categories})
+    console.log(categoryProduct)
     res.json(categoryProduct)
 }
 
